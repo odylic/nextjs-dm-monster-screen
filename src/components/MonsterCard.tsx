@@ -1,6 +1,6 @@
 const MonsterCard = () => {
   return (
-    <div className="bg-gray-200 p-5 rounded-lg m-5 text-center">
+    <div className="p-5 rounded-lg m-5 text-center shadow-monsterCard bg-gray-300">
       <div>
         <input
           type="text"
@@ -24,10 +24,13 @@ const MonsterCard = () => {
       </div>
       <div className="m-2">
         <button className="bg-gray-50 px-2 rounded-md">-</button>
-        <input type="number" className="mx-2 w-24 text-center rounded-md" />
+        <input
+          type="number"
+          className="mx-2 w-24 text-center rounded-md"
+          min="0"
+        />
         <button className="bg-gray-50 px-2 rounded-md">+</button>
       </div>
-
       <textarea className="resize" id="text" cols="25" rows="5"></textarea>
     </div>
   );
