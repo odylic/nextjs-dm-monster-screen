@@ -1,8 +1,21 @@
 import create from 'zustand'
 
+export interface State {
+    count: number;
+    increase: (value: number) => void;
+    decrease: (value: number) => void;
+}
+
 const useStore = create((set) => ({
-    color: 'white',
-    changeColor: () => set((state: any) => ({color: state.color === 'white' ? 'black' : 'white'}))
+    count: 0,
+    increase: (value: number) => set((state: State)=>({
+        ...state,
+        count: state.count + value
+    })),
+    decrease: (value: number) => set((state: State)=> ({
+        ...state,
+        count: state.count - value
+    }))
 }))
 
 export default useStore
