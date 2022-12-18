@@ -1,17 +1,27 @@
 import useStore, { State } from "../../store/store";
 import { useState } from "react";
+import { Monster } from "../../store/store";
 
-const MonsterCard = () => {
-  const count = useStore((state: any) => state.count);
-  const increase = useStore((state: any) => state.increase);
-  const decrease = useStore((state: any) => state.decrease);
+const MonsterCard = ({ id, hp, temp }: Monster) => {
+  const count = useStore((state) => state.count);
+  const increase = useStore((state) => state.increase);
+  const decrease = useStore((state) => state.decrease);
+  const removeMonster = useStore((state) => state.removeMonster);
 
   return (
     <div className="relative">
       <div className="p-5 rounded-lg m-5 text-center shadow-monsterCard bg-gray-300">
         {/* close button */}
         <div className="absolute top-2 right-3 bg-slate-50 rounded-3xl">
-          <button className="px-1">X</button>
+          <button
+            className="px-1"
+            onClick={(e) => {
+              e.preventDefault();
+              removeMonster(id);
+            }}
+          >
+            X
+          </button>
         </div>
         <div>
           {/* Name */}
