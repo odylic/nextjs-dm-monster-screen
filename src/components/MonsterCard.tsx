@@ -37,7 +37,7 @@ const MonsterCard = ({ id, hp, temp }: Monster) => {
             type="number"
             className="w-16 h-10 text-center text-xl rounded-md mr-2"
             min="0"
-            placeholder={count}
+            placeholder="HP"
           />
           {/* Temp */}
           <input
