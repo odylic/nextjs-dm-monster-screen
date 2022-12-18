@@ -6,7 +6,7 @@ export interface State {
     decrease: (value: number) => void;
 }
 
-const useStore = create((set) => ({
+const useStore = create<State>((set) => ({
     count: 0,
     increase: (value: number) => set((state: State)=>({
         ...state,

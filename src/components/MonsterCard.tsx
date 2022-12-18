@@ -1,4 +1,5 @@
 import useStore, { State } from "../../store/store";
+import { useState } from "react";
 
 const MonsterCard = () => {
   const count = useStore((state: any) => state.count);
@@ -31,19 +32,30 @@ const MonsterCard = () => {
           min="0"
         />
       </div>
-      {/* Counter */}
-      <div className="m-2">
-        {/* decrease */}
-        <button className="bg-gray-50 px-2 rounded-md">-</button>
-        {/* value */}
-        <input
-          type="number"
-          className="mx-2 w-24 text-center rounded-md"
-          min="0"
-        />
-        {/* increase */}
-        <button className="bg-gray-50 px-2 rounded-md">+</button>
-      </div>
+      <form>
+        {/* Counter */}
+        <div className="m-2">
+          {/* decrease */}
+          <button className="bg-gray-50 px-2 rounded-md">-</button>
+          {/* value */}
+          <input
+            type="number"
+            className="mx-2 w-24 text-center rounded-md"
+            min="0"
+          />
+          {/* increase */}
+          <button
+            className="bg-gray-50 px-2 rounded-md"
+            onClick={(e) => {
+              e.preventDefault();
+              console.log(count);
+              increase(2);
+            }}
+          >
+            +
+          </button>
+        </div>
+      </form>
       <textarea className="resize" id="text" cols={25} rows={5}></textarea>
     </div>
   );
