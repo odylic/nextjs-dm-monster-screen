@@ -2,6 +2,7 @@ import { useState } from "react";
 import {
   Monster,
   deleteMonster,
+  incrementByAmount,
   setHp,
   setTemp,
 } from "../app/slices/MonsterSlice";
@@ -106,6 +107,11 @@ const MonsterCard = ({ hp, id, temp }: Monster) => {
               className="bg-gray-50 px-2 rounded-md"
               onClick={(e) => {
                 e.preventDefault();
+                dispatch(
+                  incrementByAmount({ damage: Math.abs(Number(input)), id: id })
+                );
+                setInput(0);
+                resetInput(e);
               }}
             >
               +
