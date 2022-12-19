@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const MonsterCard = ({ id, hp, temp }: Monster) => {
+const MonsterCard = () => {
   const [input, setInput] = useState();
 
   const resetInput = (e) => {
