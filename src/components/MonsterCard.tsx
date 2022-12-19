@@ -1,12 +1,7 @@
-import useStore, { State } from "../../store/store";
 import { useState } from "react";
-import { Monster } from "../../store/store";
 
 const MonsterCard = ({ id, hp, temp }: Monster) => {
-  const removeMonster = useStore((state) => state.removeMonster);
   const [input, setInput] = useState();
-  const setHp = useStore((state) => state.setHp);
-  const getId = useStore((state) => state.getId);
 
   const resetInput = (e) => {
     e.target.placeholder = "";
@@ -25,8 +20,6 @@ const MonsterCard = ({ id, hp, temp }: Monster) => {
             className="px-1"
             onClick={(e) => {
               e.preventDefault();
-              removeMonster(id);
-              console.log(id);
             }}
           >
             X
@@ -42,8 +35,8 @@ const MonsterCard = ({ id, hp, temp }: Monster) => {
         </div>
         {/* HP */}
         <div className="flex justify-center">
-          <h1 className="text-white text-3xl">{hp}</h1>
-          <h1 className="text-white text-3xl ml-1">({temp})</h1>
+          <h1 className="text-white text-3xl">HP</h1>
+          <h1 className="text-white text-3xl ml-1">(Temp)</h1>
         </div>
         <div className="mt-2">
           <input
@@ -90,7 +83,6 @@ const MonsterCard = ({ id, hp, temp }: Monster) => {
               className="bg-gray-50 px-2 rounded-md"
               onClick={(e) => {
                 e.preventDefault();
-                getId(id);
               }}
             >
               +
