@@ -37,7 +37,7 @@ export default function Home() {
       >
         Add
       </button>
-      <div className="flex flex-wrap">
+      <div className="sm:flex flex-wrap">
         {monsterList.map((monster: Monster) => {
           return (
             <MonsterCard
