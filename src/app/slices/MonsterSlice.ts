@@ -19,7 +19,7 @@ export const monsterSlice = createSlice({
   name: "monsters",
   initialState,
   reducers: {
-    addMonster: (state, action: PayloadAction<T> ) => {
+    addMonster: (state, action: PayloadAction<Monster> ) => {
       state.monsterList.push(action.payload)
     }
   }
