@@ -9,7 +9,7 @@ import {
 import { useDispatch } from "react-redux";
 
 const MonsterCard = ({ hp, id, temp }: Monster) => {
-  const [input, setInput] = useState();
+  const [input, setInput] = useState("");
   const dispatch = useDispatch();
 
   const resetInput = (e: any) => {
