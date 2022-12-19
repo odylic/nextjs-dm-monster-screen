@@ -3,11 +3,10 @@ import { useState } from "react";
 import { Monster } from "../../store/store";
 
 const MonsterCard = ({ id, hp, temp }: Monster) => {
-  const count = useStore((state) => state.count);
-  const increase = useStore((state) => state.increase);
-  const decrease = useStore((state) => state.decrease);
   const removeMonster = useStore((state) => state.removeMonster);
   const [input, setInput] = useState();
+  const setHp = useStore((state) => state.setHp);
+  const getId = useStore((state) => state.getId);
 
   const resetInput = (e) => {
     e.target.placeholder = "";
@@ -27,6 +26,7 @@ const MonsterCard = ({ id, hp, temp }: Monster) => {
             onClick={(e) => {
               e.preventDefault();
               removeMonster(id);
+              console.log(id);
             }}
           >
             X
@@ -42,8 +42,8 @@ const MonsterCard = ({ id, hp, temp }: Monster) => {
         </div>
         {/* HP */}
         <div className="flex justify-center">
-          <h1 className="text-white text-3xl">{count} </h1>
-          <h1 className="text-white text-3xl ml-1">(Temp)</h1>
+          <h1 className="text-white text-3xl">{hp}</h1>
+          <h1 className="text-white text-3xl ml-1">({temp})</h1>
         </div>
         <div className="mt-2">
           <input
@@ -51,6 +51,10 @@ const MonsterCard = ({ id, hp, temp }: Monster) => {
             className="w-16 h-10 text-center text-xl rounded-md mr-2"
             min="0"
             placeholder="HP"
+            // onFocus={}
+            // onChange={(e) => {
+
+            // }}
           />
           {/* Temp */}
           <input
@@ -86,8 +90,7 @@ const MonsterCard = ({ id, hp, temp }: Monster) => {
               className="bg-gray-50 px-2 rounded-md"
               onClick={(e) => {
                 e.preventDefault();
-                console.log(count);
-                increase(input);
+                getId(id);
               }}
             >
               +

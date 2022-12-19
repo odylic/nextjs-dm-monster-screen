@@ -16,6 +16,7 @@ export default function Home() {
         onClick={(e) => {
           e.preventDefault();
           addMonster();
+          console.log(monsterList);
         }}
       >
         Add Monster

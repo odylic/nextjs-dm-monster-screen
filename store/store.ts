@@ -1,21 +1,26 @@
 import create from 'zustand'
 import {v4 as uuidv4} from 'uuid'
+import MonsterCard from '../src/components/MonsterCard';
 
 export interface Monster {
     hp: number;
     temp: number;
     id: string;
 }
+
+export interface Hp {
+    hp: number;
+    id: string
+}
 export interface State {
     monsterList: Monster[];
     addMonster: () => void;
     removeMonster: (id: string) => void;
-    count: number;
-    increase: (value: number) => void;
-    decrease: (value: number) => void;
+    setHp: (hp: number, id: string) => void;
+    getId: (id: string) => void;
 }
 
-const useStore = create<State>((set) => ({
+const useStore = create<State>()((set) => ({
     monsterList: [],
     addMonster: () => {
         set((state) => ({
@@ -34,15 +39,12 @@ const useStore = create<State>((set) => ({
             monsterList: state.monsterList.filter((monster) => monster.id !== id)
         }))
     },
-    count: 0,
-    increase: (value: number) => set((state)=>({
-        ...state,
-        count: state.count + value
-    })),
-    decrease: (value: number) => set((state)=> ({
-        ...state,
-        count: state.count - value
-    }))
+    setHp: (hp: number, id: string) => {
+
+    }, 
+    getId: (id: string) => {
+        console.log(id)
+    },
 }))
 
 export default useStore
