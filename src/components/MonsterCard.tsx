@@ -1,6 +1,7 @@
 import { useState } from "react";
+import { Monster } from "../app/slices/MonsterSlice";
 
-const MonsterCard = () => {
+const MonsterCard = ({ hp, id, temp }: Monster) => {
   const [input, setInput] = useState();
 
   const resetInput = (e: any) => {
