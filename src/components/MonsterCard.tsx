@@ -40,7 +40,7 @@ const MonsterCard = ({ hp, id, temp }: Monster) => {
           {/* Name */}
           <input
             type="text"
-            className="text-center text-xl w-60 h-10 rounded-md"
+            className="text-center text-2xl w-60 h-10 rounded-md"
             placeholder="Name"
           />
         </div>
@@ -91,7 +91,7 @@ const MonsterCard = ({ hp, id, temp }: Monster) => {
           <div className="m-2">
             {/* decrease */}
             <button
-              className="bg-gray-50 px-2 rounded-md"
+              className="bg-gray-50 px-2 py-1 rounded-md"
               onClick={(e) => {
                 e.preventDefault();
                 dispatch(
@@ -106,7 +106,7 @@ const MonsterCard = ({ hp, id, temp }: Monster) => {
             {/* value */}
             <input
               type="number"
-              className="mx-2 w-24 text-center rounded-md"
+              className="mx-2 w-24 h-10 text-center rounded-md"
               min="0"
               placeholder="Dmg/Heal"
               value={input}
@@ -121,7 +121,7 @@ const MonsterCard = ({ hp, id, temp }: Monster) => {
             />
             {/* increase */}
             <button
-              className="bg-gray-50 px-2 rounded-md"
+              className="bg-gray-50 px-2 py-1 rounded-md"
               onClick={(e) => {
                 e.preventDefault();
                 dispatch(
