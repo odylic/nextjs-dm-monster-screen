@@ -29,7 +29,12 @@ export const monsterSlice = createSlice({
       state.monsterList.map((monster) => {
         if (action.payload.id === monster.id) monster.hp = action.payload.hp
       })
-    }
+    },
+    setTemp: (state,action: PayloadAction<{temp: number, id: string}>) => {
+      state.monsterList.map((monster)=> {
+        if (action.payload.id === monster.id) monster.temp = action.payload.temp
+      })
+    },
   }
 })
 
@@ -37,6 +42,7 @@ export const {
   addMonster,
   deleteMonster,
   setHp,
+  setTemp,
 } = monsterSlice.actions;
 
 export const selectMonster = (state: RootState) => state.monsters.monsterList;
