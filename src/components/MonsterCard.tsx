@@ -2,9 +2,10 @@ import { useState } from "react";
 import {
   Monster,
   deleteMonster,
-  incrementByAmount,
   setHp,
   setTemp,
+  incrementByAmount,
+  decrementByAmount,
 } from "../app/slices/MonsterSlice";
 import { useDispatch } from "react-redux";
 
@@ -55,7 +56,9 @@ const MonsterCard = ({ hp, id, temp }: Monster) => {
             min="0"
             placeholder="HP"
             onFocus={(e) => {
-              resetInput(e);
+              resetValue(e);
+            }}
+            onBlur={(e) => {
               resetValue(e);
             }}
             onChange={(e) => {
@@ -70,7 +73,9 @@ const MonsterCard = ({ hp, id, temp }: Monster) => {
             placeholder="Temp"
             min="0"
             onFocus={(e) => {
-              resetInput(e);
+              resetValue(e);
+            }}
+            onBlur={(e) => {
               resetValue(e);
             }}
             onChange={(e) => {
@@ -85,7 +90,19 @@ const MonsterCard = ({ hp, id, temp }: Monster) => {
           {/* Counter */}
           <div className="m-2">
             {/* decrease */}
-            <button className="bg-gray-50 px-2 rounded-md">-</button>
+            <button
+              className="bg-gray-50 px-2 rounded-md"
+              onClick={(e) => {
+                e.preventDefault();
+                dispatch(
+                  decrementByAmount({ damage: Math.abs(Number(input)), id: id })
+                );
+                setInput("");
+                resetInput(e);
+              }}
+            >
+              -
+            </button>
             {/* value */}
             <input
               type="number"
@@ -94,8 +111,8 @@ const MonsterCard = ({ hp, id, temp }: Monster) => {
               placeholder="Dmg/Heal"
               value={input}
               onFocus={(e) => {
+                e.preventDefault();
                 resetValue(e);
-                // resetInput(e);
               }}
               onChange={(e: any) => {
                 setInput(e.target.value);

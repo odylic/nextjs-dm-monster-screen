@@ -40,7 +40,30 @@ export const monsterSlice = createSlice({
         if (action.payload.id === monster.id) monster.hp += action.payload.damage;
         if (monster.hp < 0) monster.hp = 0;
       })
-    }
+    },
+    decrementByAmount: (state, action: PayloadAction<{damage: number, id: string}>) => {
+      state.monsterList.map((monster)=> {
+        if (action.payload.id === monster.id) {
+          if (monster.temp === 0) {
+            monster.hp -= action.payload.damage
+          }
+          if (monster.temp > 0) {
+            if (action.payload.damage === monster.temp) {
+              monster.temp = 0
+            }
+            else if (action.payload.damage < monster.temp){
+              monster.temp -= action.payload.damage
+            }
+            else if (action.payload.damage > monster.temp) {
+              const difference = action.payload.damage - monster.temp;
+              monster.hp -= difference;
+              monster.temp = 0;
+            }
+          }
+        }
+        if (monster.hp < 0) monster.hp = 0;
+      })
+    },
   }
 })
 
@@ -50,6 +73,7 @@ export const {
   setHp,
   setTemp,
   incrementByAmount,
+  decrementByAmount,
 } = monsterSlice.actions;
 
 export const selectMonster = (state: RootState) => state.monsters.monsterList;
