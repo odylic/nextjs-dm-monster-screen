@@ -10,7 +10,7 @@ const MonsterCard = ({ id, hp, temp }: Monster) => {
 
   return (
     <div className="relative">
-      <div className="p-5 rounded-lg m-5 text-center shadow-monsterCard bg-gray-300">
+      <div className="p-5 rounded-lg m-5 text-center shadow-monsterCard bg-purple-900">
         {/* close button */}
         <div className="absolute top-2 right-3 bg-slate-50 rounded-3xl">
           <button
