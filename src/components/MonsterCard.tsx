@@ -41,7 +41,7 @@ const MonsterCard = ({ hp, id, temp }: Monster) => {
           <input
             type="text"
             className="text-center text-xl w-60 h-10 rounded-md"
-            placeholder="Monster Name"
+            placeholder="Name"
           />
         </div>
         {/* HP */}
