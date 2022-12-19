@@ -110,7 +110,7 @@ const MonsterCard = ({ hp, id, temp }: Monster) => {
                 dispatch(
                   incrementByAmount({ damage: Math.abs(Number(input)), id: id })
                 );
-                setInput(0);
+                setInput("");
                 resetInput(e);
               }}
             >
