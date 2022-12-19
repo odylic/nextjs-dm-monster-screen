@@ -7,6 +7,15 @@ const MonsterCard = ({ id, hp, temp }: Monster) => {
   const increase = useStore((state) => state.increase);
   const decrease = useStore((state) => state.decrease);
   const removeMonster = useStore((state) => state.removeMonster);
+  const [input, setInput] = useState();
+
+  const resetInput = (e) => {
+    e.target.placeholder = "";
+  };
+
+  const resetValue = (e) => {
+    e.target.value = "";
+  };
 
   return (
     <div className="relative">
@@ -32,6 +41,10 @@ const MonsterCard = ({ id, hp, temp }: Monster) => {
           />
         </div>
         {/* HP */}
+        <div className="flex justify-center">
+          <h1 className="text-white text-3xl">{count} </h1>
+          <h1 className="text-white text-3xl ml-1">(Temp)</h1>
+        </div>
         <div className="mt-2">
           <input
             type="number"
@@ -57,6 +70,16 @@ const MonsterCard = ({ id, hp, temp }: Monster) => {
               type="number"
               className="mx-2 w-24 text-center rounded-md"
               min="0"
+              placeholder="Dmg/Heal"
+              value={input}
+              onFocus={(e) => {
+                resetValue(e);
+                // resetInput(e);
+              }}
+              onChange={(e: any) => {
+                setInput(e.target.value);
+                console.log(input);
+              }}
             />
             {/* increase */}
             <button
@@ -64,14 +87,14 @@ const MonsterCard = ({ id, hp, temp }: Monster) => {
               onClick={(e) => {
                 e.preventDefault();
                 console.log(count);
-                increase(2);
+                increase(input);
               }}
             >
               +
             </button>
           </div>
         </form>
-        <textarea className="resize" id="text" cols={25} rows={5}></textarea>
+        <textarea className="resize" id="text" cols={25} rows={5} />
       </div>
     </div>
   );
