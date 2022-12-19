@@ -24,13 +24,19 @@ export const monsterSlice = createSlice({
     },
     deleteMonster: (state, action: PayloadAction<string>) => {
       state.monsterList = state.monsterList.filter((item) => item.id !== action.payload)
+    },
+    setHp: (state, action: PayloadAction<{hp: number, id: string}>) => {
+      state.monsterList.map((monster) => {
+        if (action.payload.id === monster.id) monster.hp = action.payload.hp
+      })
     }
   }
 })
 
 export const {
   addMonster,
-  deleteMonster
+  deleteMonster,
+  setHp,
 } = monsterSlice.actions;
 
 export const selectMonster = (state: RootState) => state.monsters.monsterList;

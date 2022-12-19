@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Monster, deleteMonster } from "../app/slices/MonsterSlice";
+import { Monster, deleteMonster, setHp } from "../app/slices/MonsterSlice";
 import { useDispatch } from "react-redux";
 
 const MonsterCard = ({ hp, id, temp }: Monster) => {
@@ -39,7 +39,7 @@ const MonsterCard = ({ hp, id, temp }: Monster) => {
         </div>
         {/* HP */}
         <div className="flex justify-center">
-          <h1 className="text-white text-3xl">HP</h1>
+          <h1 className="text-white text-3xl">{hp}</h1>
           <h1 className="text-white text-3xl ml-1">(Temp)</h1>
         </div>
         <div className="mt-2">
@@ -48,10 +48,14 @@ const MonsterCard = ({ hp, id, temp }: Monster) => {
             className="w-16 h-10 text-center text-xl rounded-md mr-2"
             min="0"
             placeholder="HP"
-            // onFocus={}
-            // onChange={(e) => {
-
-            // }}
+            onFocus={(e) => {
+              resetInput(e);
+              resetValue(e);
+            }}
+            onChange={(e) => {
+              e.preventDefault();
+              dispatch(setHp({ hp: Number(e.target.value), id: id }));
+            }}
           />
           {/* Temp */}
           <input
