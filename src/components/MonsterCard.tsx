@@ -1,8 +1,10 @@
 import { useState } from "react";
-import { Monster } from "../app/slices/MonsterSlice";
+import { Monster, deleteMonster } from "../app/slices/MonsterSlice";
+import { useDispatch } from "react-redux";
 
 const MonsterCard = ({ hp, id, temp }: Monster) => {
   const [input, setInput] = useState();
+  const dispatch = useDispatch();
 
   const resetInput = (e: any) => {
     e.target.placeholder = "";
@@ -21,6 +23,7 @@ const MonsterCard = ({ hp, id, temp }: Monster) => {
             className="px-1"
             onClick={(e) => {
               e.preventDefault();
+              dispatch(deleteMonster(id));
             }}
           >
             X

@@ -21,12 +21,16 @@ export const monsterSlice = createSlice({
   reducers: {
     addMonster: (state, action: PayloadAction<Monster> ) => {
       state.monsterList.push(action.payload)
+    },
+    deleteMonster: (state, action: PayloadAction<string>) => {
+      state.monsterList = state.monsterList.filter((item) => item.id !== action.payload)
     }
   }
 })
 
 export const {
-  addMonster
+  addMonster,
+  deleteMonster
 } = monsterSlice.actions;
 
 export const selectMonster = (state: RootState) => state.monsters.monsterList;
