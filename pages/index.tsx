@@ -1,7 +1,11 @@
 import MonsterCard from "../src/components/MonsterCard";
 import Head from "next/head";
 import { useDispatch, useSelector } from "react-redux";
-import { addMonster, selectMonster } from "../src/app/slices/MonsterSlice";
+import {
+  Monster,
+  addMonster,
+  selectMonster,
+} from "../src/app/slices/MonsterSlice";
 import uuid from "react-uuid";
 
 export default function Home() {
@@ -34,7 +38,7 @@ export default function Home() {
         Add Monster
       </button>
       <div className="flex flex-wrap">
-        {monsterList.map((monster) => {
+        {monsterList.map((monster: Monster) => {
           return (
             <MonsterCard
               key={monster.id}
