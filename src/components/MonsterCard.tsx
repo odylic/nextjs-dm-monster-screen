@@ -3,11 +3,11 @@ import { useState } from "react";
 const MonsterCard = () => {
   const [input, setInput] = useState();
 
-  const resetInput = (e) => {
+  const resetInput = (e: any) => {
     e.target.placeholder = "";
   };
 
-  const resetValue = (e) => {
+  const resetValue = (e: any) => {
     e.target.value = "";
   };
 
