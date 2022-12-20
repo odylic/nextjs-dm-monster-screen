@@ -31,7 +31,7 @@ const InitiativeOrder = () => {
       )}
 
       {visibility && (
-        <div className="fixed top-0 bg-initiativeBackground h-screen w-[20vw] left-[80vw]">
+        <div className="fixed top-0 bg-initiativeBackground h-screen w-[50vw] left-[50vw] sm:w-[30vw] sm:left-[70vw]">
           <div className="">
             <button
               className="flex p-3"
@@ -52,7 +52,7 @@ const InitiativeOrder = () => {
           <form>
             <div className="flex">
               <input
-                className="w-1/2 m-1 rounded-md px-1"
+                className="w-[50%] h-10 m-1 rounded-md px-1"
                 placeholder="Name"
                 onFocus={resetValue}
                 onChange={(e) => {
@@ -60,7 +60,7 @@ const InitiativeOrder = () => {
                 }}
               />
               <input
-                className="w-1/2 m-1 rounded-md px-1"
+                className="w-[50%] h-10 m-1 rounded-md px-1"
                 placeholder="Initiative"
                 onFocus={resetValue}
                 onChange={(e) => {
@@ -68,7 +68,7 @@ const InitiativeOrder = () => {
                 }}
               />
               <button
-                className="px-5 py-15 bg-slate-50 rounded-md m-1"
+                className="h-10 px-5 py-15 bg-slate-50 rounded-md m-1"
                 type="submit"
               >
                 Enter
