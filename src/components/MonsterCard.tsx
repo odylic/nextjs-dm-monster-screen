@@ -14,10 +14,6 @@ const MonsterCard = ({ hp, id, temp }: Monster) => {
   const [input, setInput] = useState("");
   const dispatch = useDispatch();
 
-  const resetInput = (e: any) => {
-    e.target.placeholder = "";
-  };
-
   const resetValue = (e: any) => {
     e.target.value = "";
   };
@@ -99,7 +95,6 @@ const MonsterCard = ({ hp, id, temp }: Monster) => {
                   decrementByAmount({ damage: Math.abs(Number(input)), id: id })
                 );
                 setInput("");
-                resetInput(e);
               }}
             >
               -
@@ -128,7 +123,6 @@ const MonsterCard = ({ hp, id, temp }: Monster) => {
                   incrementByAmount({ damage: Math.abs(Number(input)), id: id })
                 );
                 setInput("");
-                resetInput(e);
               }}
             >
               +
