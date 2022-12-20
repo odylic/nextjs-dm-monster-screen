@@ -9,6 +9,10 @@ const InitiativeOrder = () => {
   const [initiative, setInitiative] = useState("");
   const [visibility, setVisibility] = useState(false);
 
+  const resetValue = (e: any) => {
+    e.target.value = "";
+  };
+
   return (
     <div>
       {!visibility && (
@@ -41,6 +45,36 @@ const InitiativeOrder = () => {
               <h1 className="text-3xl font-serif">Initiative Order</h1>
             </button>
           </div>
+          {/* <div>
+            <button>Sort</button>
+            <button>Copy</button>
+          </div> */}
+          <form>
+            <div className="flex">
+              <input
+                className="w-1/2 m-1 rounded-md px-1"
+                placeholder="Name"
+                onFocus={resetValue}
+                onChange={(e) => {
+                  setName(e.target.value);
+                }}
+              />
+              <input
+                className="w-1/2 m-1 rounded-md px-1"
+                placeholder="Initiative"
+                onFocus={resetValue}
+                onChange={(e) => {
+                  setInitiative(e.target.value);
+                }}
+              />
+              <button
+                className="px-5 py-15 bg-slate-50 rounded-md m-1"
+                type="submit"
+              >
+                Enter
+              </button>
+            </div>
+          </form>
         </div>
       )}
     </div>
