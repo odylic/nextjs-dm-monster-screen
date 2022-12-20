@@ -50,7 +50,9 @@ export default function Home() {
           );
         })}
       </div>
-      <InitiativeOrder />
+      <div className="m-2">
+        <InitiativeOrder />
+      </div>
     </div>
   );
 }

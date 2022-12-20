@@ -3,10 +3,10 @@ import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 
 const InitiativeOrder = () => {
   return (
-    <div>
-      <h1>Initiative Order</h1>
-      <ArrowBackIosIcon fontSize="large" />
-      <ArrowForwardIosIcon fontSize="large" />
+    <div className=" fixed top-0 bg-initiativeBackground h-screen w-[20vw] left-[80vw]">
+      <div>
+        <h1 className="text-xl">Initiative Order</h1>
+      </div>
     </div>
   );
 };
