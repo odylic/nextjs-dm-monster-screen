@@ -7,6 +7,7 @@ import {
   selectMonster,
 } from "../src/app/slices/MonsterSlice";
 import uuid from "react-uuid";
+import InitiativeOrder from "../src/components/InitiativeOrder";
 
 export default function Home() {
   const dispatch = useDispatch();
@@ -49,6 +50,7 @@ export default function Home() {
           );
         })}
       </div>
+      <InitiativeOrder />
     </div>
   );
 }
