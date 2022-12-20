@@ -148,8 +148,8 @@ const MonsterCard = ({ hp, id, temp }: Monster) => {
             }}
           >
             Copy
-          </button> */}
-        </div>
+          </button>
+        </div> */}
       </div>
     </div>
   );
