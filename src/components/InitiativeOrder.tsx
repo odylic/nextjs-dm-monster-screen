@@ -25,10 +25,10 @@ const InitiativeOrder = () => {
 
   const initiativeCopy = initiativeOrder.map((item, index) => item.name);
   const makeIntoString = initiativeCopy.join("\n");
-  
+
   useEffect(() => {
     setCopyInitiative(makeIntoString);
-  }, [initiativeOrder]);
+  }, [initiativeOrder, makeIntoString]);
 
   const resetValue = (e: any) => {
     e.target.value = "";
