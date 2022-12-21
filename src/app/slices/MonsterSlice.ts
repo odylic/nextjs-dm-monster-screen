@@ -7,12 +7,20 @@ export interface Monster {
   temp: number;
 }
 
+export interface Initiative {
+  name: string;
+  id: string;
+  initiative: number;
+}
+
 export interface State {
   monsterList: Monster[];
+  initiativeOrder: Initiative[];
 }
 
 const initialState: State = {
   monsterList: [],
+  initiativeOrder: []
 }
 
 export const monsterSlice = createSlice({
@@ -64,7 +72,10 @@ export const monsterSlice = createSlice({
         if (monster.hp < 0) monster.hp = 0;
       })
     },
-  }
+    addToInitiativeOrder: (state, action: PayloadAction<Initiative>) => {
+      state.initiativeOrder.push(action.payload)
+    }
+  },
 })
 
 export const {
@@ -74,8 +85,11 @@ export const {
   setTemp,
   incrementByAmount,
   decrementByAmount,
+  addToInitiativeOrder,
 } = monsterSlice.actions;
 
 export const selectMonster = (state: RootState) => state.monsters.monsterList;
+
+export const selectInitiativeOrder = (state: RootState) => state.monsters.initiativeOrder;
 
 export default monsterSlice.reducer;

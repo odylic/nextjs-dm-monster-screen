@@ -2,12 +2,19 @@ import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import {
+  selectInitiativeOrder,
+  addToInitiativeOrder,
+} from "../app/slices/MonsterSlice";
+import uuid from "react-uuid";
 
 const InitiativeOrder = () => {
   const dispatch = useDispatch();
   const [name, setName] = useState("");
   const [initiative, setInitiative] = useState("");
   const [visibility, setVisibility] = useState(false);
+
+  const initiativeOrder = useSelector(selectInitiativeOrder);
 
   const resetValue = (e: any) => {
     e.target.value = "";
@@ -54,7 +61,7 @@ const InitiativeOrder = () => {
               <input
                 className="w-[50%] h-10 m-1 rounded-md px-1"
                 placeholder="Name"
-                onFocus={resetValue}
+                value={name}
                 onChange={(e) => {
                   setName(e.target.value);
                 }}
@@ -62,19 +69,45 @@ const InitiativeOrder = () => {
               <input
                 className="w-[50%] h-10 m-1 rounded-md px-1"
                 placeholder="Initiative"
-                onFocus={resetValue}
+                value={initiative}
+                type="number"
                 onChange={(e) => {
                   setInitiative(e.target.value);
                 }}
               />
               <button
+                disabled={!name || !initiative}
                 className="h-10 px-5 py-15 bg-slate-50 rounded-md m-1"
                 type="submit"
+                onClick={(e) => {
+                  e.preventDefault();
+                  dispatch(
+                    addToInitiativeOrder({
+                      name: name,
+                      initiative: Math.abs(Number(initiative)),
+                      id: uuid(),
+                    })
+                  );
+                  setName("");
+                  setInitiative("");
+                  console.log(initiativeOrder);
+                }}
               >
                 Enter
               </button>
             </div>
           </form>
+
+          <div>
+            {initiativeOrder.map((item, index) => {
+              return (
+                <div className="flex" key={index}>
+                  <div>{item.name}</div>
+                  <div>{item.initiative} </div>
+                </div>
+              );
+            })}
+          </div>
         </div>
       )}
     </div>
