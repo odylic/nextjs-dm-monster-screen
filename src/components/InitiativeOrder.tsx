@@ -6,6 +6,7 @@ import {
   selectInitiativeOrder,
   addToInitiativeOrder,
   deleteFromInitiativeOrder,
+  sortInitiativeOrder,
 } from "../app/slices/MonsterSlice";
 import uuid from "react-uuid";
 
@@ -53,10 +54,20 @@ const InitiativeOrder = () => {
               <h1 className="text-3xl font-serif">Initiative Order</h1>
             </button>
           </div>
-          {/* <div>
-            <button>Sort</button>
-            <button>Copy</button>
-          </div> */}
+          <div className="flex w-full">
+            <button
+              className="w-[48%] bg-slate-50 rounded-md m-1 h-10"
+              onClick={(e) => {
+                e.preventDefault();
+                dispatch(sortInitiativeOrder());
+              }}
+            >
+              Sort
+            </button>
+            <button className="w-[50%] bg-slate-50 rounded-md m-1 h-10 ">
+              Copy
+            </button>
+          </div>
           <form>
             <div className="flex w-full">
               <input
