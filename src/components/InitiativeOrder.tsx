@@ -7,6 +7,7 @@ import {
   addToInitiativeOrder,
   deleteFromInitiativeOrder,
   sortInitiativeOrder,
+  setInitiativeOrder,
 } from "../app/slices/MonsterSlice";
 import uuid from "react-uuid";
 
@@ -59,7 +60,7 @@ const InitiativeOrder = () => {
               className="w-[48%] bg-slate-50 rounded-md m-1 h-10"
               onClick={(e) => {
                 e.preventDefault();
-                dispatch(sortInitiativeOrder());
+                dispatch(sortInitiativeOrder(null));
               }}
             >
               Sort
