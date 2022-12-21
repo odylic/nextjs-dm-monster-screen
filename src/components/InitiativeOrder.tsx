@@ -5,6 +5,7 @@ import { useSelector, useDispatch } from "react-redux";
 import {
   selectInitiativeOrder,
   addToInitiativeOrder,
+  deleteFromInitiativeOrder,
 } from "../app/slices/MonsterSlice";
 import uuid from "react-uuid";
 
@@ -57,9 +58,9 @@ const InitiativeOrder = () => {
             <button>Copy</button>
           </div> */}
           <form>
-            <div className="flex">
+            <div className="flex w-full">
               <input
-                className="w-[50%] h-10 m-1 rounded-md px-1"
+                className="w-[50%] h-10 m-1 rounded-md px-2"
                 placeholder="Name"
                 value={name}
                 onChange={(e) => {
@@ -67,7 +68,7 @@ const InitiativeOrder = () => {
                 }}
               />
               <input
-                className="w-[50%] h-10 m-1 rounded-md px-1"
+                className="w-[30%] h-10 m-1 rounded-md px-2"
                 placeholder="Initiative"
                 value={initiative}
                 type="number"
@@ -77,7 +78,7 @@ const InitiativeOrder = () => {
               />
               <button
                 disabled={!name || !initiative}
-                className="h-10 px-5 py-15 bg-slate-50 rounded-md m-1"
+                className="w-[20%] h-10 bg-slate-50 rounded-md m-1"
                 type="submit"
                 onClick={(e) => {
                   e.preventDefault();
@@ -101,9 +102,22 @@ const InitiativeOrder = () => {
           <div>
             {initiativeOrder.map((item, index) => {
               return (
-                <div className="flex" key={index}>
-                  <div>{item.name}</div>
-                  <div>{item.initiative} </div>
+                <div className="flex w-full" key={index}>
+                  <div className="w-[50%] m-1 px-2 h-7 bg-slate-50 rounded-md">
+                    {item.name}
+                  </div>
+                  <div className="w-[30%] m-1 h-7 bg-slate-50 px-2 rounded-md ">
+                    {item.initiative}{" "}
+                  </div>
+                  <button
+                    className="w-[20%] h-7 px-2 bg-slate-50 rounded-md m-1"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      dispatch(deleteFromInitiativeOrder(item.id));
+                    }}
+                  >
+                    X
+                  </button>
                 </div>
               );
             })}

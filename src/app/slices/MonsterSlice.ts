@@ -73,10 +73,12 @@ export const monsterSlice = createSlice({
       })
     },
     addToInitiativeOrder: (state, action: PayloadAction<Initiative>) => {
-      state.initiativeOrder.push(action.payload)
-    }
-  },
-})
+        state.initiativeOrder.push(action.payload)
+    },
+      deleteFromInitiativeOrder: (state, action: PayloadAction<string>) => {
+        state.initiativeOrder = state.initiativeOrder.filter((item)=> item.id !== action.payload)
+    },
+}})
 
 export const {
   addMonster,
@@ -86,6 +88,7 @@ export const {
   incrementByAmount,
   decrementByAmount,
   addToInitiativeOrder,
+  deleteFromInitiativeOrder,
 } = monsterSlice.actions;
 
 export const selectMonster = (state: RootState) => state.monsters.monsterList;
