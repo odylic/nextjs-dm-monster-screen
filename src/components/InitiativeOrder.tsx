@@ -1,6 +1,6 @@
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import {
   selectInitiativeOrder,
@@ -19,11 +19,16 @@ const InitiativeOrder = () => {
   const [initiative, setInitiative] = useState("");
   const [visibility, setVisibility] = useState(false);
   const [copyInitiative, setCopyInitiative] = useState("");
+  const [success, setSuccess] = useState(false);
 
   const initiativeOrder = useSelector(selectInitiativeOrder);
 
   const initiativeCopy = initiativeOrder.map((item, index) => item.name);
   const makeIntoString = initiativeCopy.join("\n");
+  
+  useEffect(() => {
+    setCopyInitiative(makeIntoString);
+  }, [initiativeOrder]);
 
   const resetValue = (e: any) => {
     e.target.value = "";
@@ -97,12 +102,16 @@ const InitiativeOrder = () => {
                 e.preventDefault();
                 setCopyInitiative(makeIntoString);
                 navigator.clipboard.writeText(copyInitiative).then(
-                  () => console.log("copied"),
-                  () => console.log("failed")
+                  () => {
+                    setSuccess(true);
+                    console.log("initiativeOrder:", initiativeOrder);
+                    console.log("copyInitiative:", copyInitiative);
+                  },
+                  () => setSuccess(false)
                 );
               }}
             >
-              Copy
+              {success ? "Copied" : "Copy"}
             </button>
           </div>
           <form>
@@ -139,7 +148,6 @@ const InitiativeOrder = () => {
                   );
                   setName("");
                   setInitiative("");
-                  console.log(initiativeOrder);
                 }}
               >
                 Enter
