@@ -16,8 +16,12 @@ const InitiativeOrder = () => {
   const [name, setName] = useState("");
   const [initiative, setInitiative] = useState("");
   const [visibility, setVisibility] = useState(false);
+  const [copyInitiative, setCopyInitiative] = useState("");
 
   const initiativeOrder = useSelector(selectInitiativeOrder);
+
+  const initiativeCopy = initiativeOrder.map((item, index) => item.name);
+  const makeIntoString = initiativeCopy.join("\n");
 
   const resetValue = (e: any) => {
     e.target.value = "";
@@ -65,7 +69,17 @@ const InitiativeOrder = () => {
             >
               Sort
             </button>
-            <button className="w-[50%] bg-slate-50 rounded-md m-1 h-10 ">
+            <button
+              className="w-[50%] bg-slate-50 rounded-md m-1 h-10"
+              onClick={(e) => {
+                e.preventDefault();
+                setCopyInitiative(makeIntoString);
+                navigator.clipboard.writeText(copyInitiative).then(
+                  () => console.log("copied"),
+                  () => console.log("failed")
+                );
+              }}
+            >
               Copy
             </button>
           </div>
