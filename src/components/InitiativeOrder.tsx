@@ -168,20 +168,20 @@ const InitiativeOrder = () => {
                           {...provided.draggableProps}
                           {...provided.dragHandleProps}
                         >
-                          <div className="w-[50%] m-1 px-2 h-7 bg-slate-50 rounded-md">
+                          <div className="w-[50%] m-1 px-2 h-7 bg-purple-900 rounded-md text-white">
                             {item.name}
                           </div>
-                          <div className="w-[30%] m-1 h-7 bg-slate-50 px-2 rounded-md">
+                          <div className="w-[30%] m-1 h-7 bg-purple-900 px-2 rounded-md text-white">
                             {item.initiative}
                           </div>
                           <button
-                            className="w-[20%] h-7 px-2 bg-slate-50 rounded-md m-1"
+                            className="w-[20%] h-7 px-2 rounded-md m-1 bg-purple-900 text-white"
                             onClick={(e) => {
                               e.preventDefault();
                               dispatch(deleteFromInitiativeOrder(item.id));
                             }}
                           >
-                            x
+                            X
                           </button>
                         </div>
                       )}
