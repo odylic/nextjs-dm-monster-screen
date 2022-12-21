@@ -102,11 +102,7 @@ const InitiativeOrder = () => {
                 e.preventDefault();
                 setCopyInitiative(makeIntoString);
                 navigator.clipboard.writeText(copyInitiative).then(
-                  () => {
-                    setSuccess(true);
-                    console.log("initiativeOrder:", initiativeOrder);
-                    console.log("copyInitiative:", copyInitiative);
-                  },
+                  () => setSuccess(true),
                   () => setSuccess(false)
                 );
               }}

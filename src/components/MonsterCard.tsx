@@ -130,20 +130,6 @@ const MonsterCard = ({ hp, id, temp }: Monster) => {
           </div>
         </form>
         <textarea className="resize" id="text" cols={25} rows={5} />
-        {/* <div className="">
-          <button
-            className="bg-gray-50 px-2 py-1 rounded-md"
-            onClick={(e) => {
-              e.preventDefault();
-              navigator.clipboard.writeText("example").then(
-                () => console.log("copied"),
-                () => console.log("failed")
-              );
-            }}
-          >
-            Copy
-          </button>
-        </div> */}
       </div>
     </div>
   );
