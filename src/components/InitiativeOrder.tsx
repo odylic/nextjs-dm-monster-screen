@@ -88,7 +88,7 @@ const InitiativeOrder = () => {
           </div>
           <div className="flex w-full">
             <button
-              className="w-[48%] bg-slate-50 rounded-md m-1 h-10"
+              className="w-[48%] bg-slate-50 active:bg-slate-200 rounded-md m-1 h-10"
               onClick={(e) => {
                 e.preventDefault();
                 dispatch(sortInitiativeOrder(null));
@@ -97,7 +97,7 @@ const InitiativeOrder = () => {
               Sort
             </button>
             <button
-              className="w-[50%] bg-slate-50 rounded-md m-1 h-10"
+              className="w-[50%] bg-slate-50 rounded-md m-1 h-10 active:bg-slate-200"
               onClick={(e) => {
                 e.preventDefault();
                 setCopyInitiative(makeIntoString);
@@ -131,7 +131,7 @@ const InitiativeOrder = () => {
               />
               <button
                 disabled={!name || !initiative}
-                className="w-[20%] h-10 bg-slate-50 rounded-md m-1"
+                className="w-[20%] h-10 bg-slate-50 active:bg-slate-200 rounded-md m-1"
                 type="submit"
                 onClick={(e) => {
                   e.preventDefault();
@@ -175,7 +175,7 @@ const InitiativeOrder = () => {
                             {item.initiative}
                           </div>
                           <button
-                            className="w-[20%] h-7 px-2 rounded-md m-1 bg-purple-900 text-white"
+                            className="w-[20%] h-7 px-2 rounded-md m-1 bg-purple-900 active:bg-purple-800 text-white"
                             onClick={(e) => {
                               e.preventDefault();
                               dispatch(deleteFromInitiativeOrder(item.id));

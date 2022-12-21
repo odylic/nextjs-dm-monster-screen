@@ -87,7 +87,7 @@ const MonsterCard = ({ hp, id, temp }: Monster) => {
           <div className="m-2">
             {/* decrease */}
             <button
-              className="bg-gray-50 px-2 py-1 rounded-md"
+              className="bg-gray-50 active:bg-slate-200 px-2 py-1 rounded-md"
               onClick={(e) => {
                 e.preventDefault();
                 dispatch(
@@ -115,7 +115,7 @@ const MonsterCard = ({ hp, id, temp }: Monster) => {
             />
             {/* increase */}
             <button
-              className="bg-gray-50 px-2 py-1 rounded-md"
+              className="bg-gray-50 active:bg-slate-200 px-2 py-1 rounded-md"
               onClick={(e) => {
                 e.preventDefault();
                 dispatch(

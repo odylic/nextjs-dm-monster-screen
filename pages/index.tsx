@@ -30,7 +30,7 @@ export default function Home() {
       </Head>
       <h1 className="text-3xl m-5 font-serif">DM Screen</h1>
       <button
-        className="rounded-lg shadow-monsterCard p-4 bg-gray-200"
+        className="rounded-lg shadow-monsterCard p-4 bg-slate-50 active:bg-slate-200"
         onClick={(e) => {
           e.preventDefault();
           createMonster();
