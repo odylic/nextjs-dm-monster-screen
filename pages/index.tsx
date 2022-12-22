@@ -8,10 +8,15 @@ import {
 } from "../src/app/slices/MonsterSlice";
 import uuid from "react-uuid";
 import InitiativeOrder from "../src/components/InitiativeOrder";
+import { useState } from "react";
+import { DiceRoller } from "@dice-roller/rpg-dice-roller";
 
 export default function Home() {
   const dispatch = useDispatch();
   const monsterList = useSelector(selectMonster);
+  const [dice, setDice] = useState("");
+  const [result, setResult] = useState("");
+  const roller = new DiceRoller();
 
   const createMonster = () => {
     dispatch(
@@ -29,6 +34,40 @@ export default function Home() {
         <title>DM Screen</title>
       </Head>
       <h1 className="text-3xl m-5 font-serif">DM Screen</h1>
+      <div className="bg-purple-900 m-5 p-5 rounded-md">
+        <h1 className="text-white">{result}</h1>
+        <form className="flex">
+          <input
+            className="m-1 rounded-md px-2 w-[60%] min-w-fit"
+            placeholder="Enter Dice Notation 4d6 Adv:2d20kh1 Disadvantage:2d20kl1"
+            onChange={(e) => {
+              setDice(e.target.value);
+            }}
+          />
+          <button
+            className="bg-slate-50 active:bg-slate-200 rounded-md px-2 m-1 w-[20%] truncate"
+            type="submit"
+            onClick={(e) => {
+              e.preventDefault();
+              roller.roll(dice);
+              let latestRoll = roller.log.shift();
+              setResult(latestRoll + "");
+            }}
+          >
+            Roll
+          </button>
+          <button
+            className="bg-slate-50 active:bg-slate-200 rounded-md px-2 m-1 w-[20%] truncate"
+            type="submit"
+            onClick={(e) => {
+              e.preventDefault();
+              setResult("");
+            }}
+          >
+            Clear
+          </button>
+        </form>
+      </div>
       <button
         className="rounded-lg shadow-monsterCard p-4 bg-slate-50 active:bg-slate-200"
         onClick={(e) => {
