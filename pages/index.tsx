@@ -14,6 +14,7 @@ import { DiceRoller } from "@dice-roller/rpg-dice-roller";
 export default function Home() {
   const dispatch = useDispatch();
   const monsterList = useSelector(selectMonster);
+  const [input, setInput] = useState("");
   const [dice, setDice] = useState("");
   const [result, setResult] = useState("");
   const roller = new DiceRoller();
@@ -40,7 +41,9 @@ export default function Home() {
           <input
             className="m-1 rounded-md px-2 w-[60%] min-w-fit"
             placeholder="Enter Dice Notation 4d6 Adv:2d20kh1 Disadvantage:2d20kl1"
+            value={input}
             onChange={(e) => {
+              setInput(e.target.value);
               setDice(e.target.value);
             }}
           />
@@ -63,6 +66,7 @@ export default function Home() {
               onClick={(e) => {
                 e.preventDefault();
                 setResult("");
+                setInput("");
               }}
             >
               Clear
