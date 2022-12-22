@@ -30,10 +30,6 @@ const InitiativeOrder = () => {
     setCopyInitiative(makeIntoString);
   }, [initiativeOrder, makeIntoString]);
 
-  const resetValue = (e: any) => {
-    e.target.value = "";
-  };
-
   const reorder = (
     list: Initiative[],
     startIndex: number,
