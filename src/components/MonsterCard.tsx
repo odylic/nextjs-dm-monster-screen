@@ -128,7 +128,7 @@ const MonsterCard = ({ hp, id, temp }: Monster) => {
             </button>
           </div>
         </form>
-        <textarea className="resize" id="text" cols={25} rows={5} />
+        <textarea className="resize p-2" id="text" cols={25} rows={5} />
       </div>
     </div>
   );
