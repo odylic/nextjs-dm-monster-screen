@@ -111,6 +111,7 @@ const InitiativeOrder = () => {
               <input
                 className="w-[50%] h-10 m-1 rounded-md px-2"
                 placeholder="Name"
+                id="name"
                 value={name}
                 onChange={(e) => {
                   setName(e.target.value);
@@ -140,6 +141,7 @@ const InitiativeOrder = () => {
                   );
                   setName("");
                   setInitiative("");
+                  document.getElementById("name").focus();
                 }}
               >
                 Enter
