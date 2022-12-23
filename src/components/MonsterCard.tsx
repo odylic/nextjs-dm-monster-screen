@@ -90,6 +90,10 @@ const MonsterCard = ({ hp, id, temp }: Monster) => {
               className="bg-gray-50 active:bg-slate-200 px-2 py-1 rounded-md"
               onClick={(e) => {
                 e.preventDefault();
+                if (input === "")
+                  dispatch(
+                    decrementByAmount({ damage: Math.abs(Number(1)), id: id })
+                  );
                 dispatch(
                   decrementByAmount({ damage: Math.abs(Number(input)), id: id })
                 );
@@ -118,6 +122,10 @@ const MonsterCard = ({ hp, id, temp }: Monster) => {
               className="bg-gray-50 active:bg-slate-200 px-2 py-1 rounded-md"
               onClick={(e) => {
                 e.preventDefault();
+                if (input === "")
+                  dispatch(
+                    incrementByAmount({ damage: Math.abs(Number(1)), id: id })
+                  );
                 dispatch(
                   incrementByAmount({ damage: Math.abs(Number(input)), id: id })
                 );
