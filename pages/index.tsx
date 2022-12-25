@@ -8,7 +8,7 @@ import {
 } from "../src/app/slices/MonsterSlice";
 import uuid from "react-uuid";
 import InitiativeOrder from "../src/components/InitiativeOrder";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { DiceRoller } from "@dice-roller/rpg-dice-roller";
 
 export default function Home() {
@@ -18,6 +18,12 @@ export default function Home() {
   const [dice, setDice] = useState("");
   const [result, setResult] = useState("");
   const roller = new DiceRoller();
+
+  useEffect(() => {
+    if (dice === "") {
+      setDice("d20");
+    }
+  }, [dice]);
 
   const createMonster = () => {
     dispatch(
@@ -53,7 +59,9 @@ export default function Home() {
               type="submit"
               onClick={(e) => {
                 e.preventDefault();
-                roller.roll(dice);
+                if (dice) {
+                  roller.roll(dice);
+                }
                 let latestRoll = roller.log.shift();
                 setResult(latestRoll + "");
               }}
