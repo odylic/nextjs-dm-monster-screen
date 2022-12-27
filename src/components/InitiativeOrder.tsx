@@ -98,7 +98,12 @@ const InitiativeOrder = () => {
                 e.preventDefault();
                 setCopyInitiative(makeIntoString);
                 navigator.clipboard.writeText(copyInitiative).then(
-                  () => setSuccess(true),
+                  () => {
+                    setSuccess(true);
+                    setTimeout(() => {
+                      setSuccess(false);
+                    }, 500);
+                  },
                   () => setSuccess(false)
                 );
               }}
