@@ -75,6 +75,7 @@ export default function Home() {
                 e.preventDefault();
                 setResult("");
                 setInput("");
+                setDice("");
               }}
             >
               Clear
