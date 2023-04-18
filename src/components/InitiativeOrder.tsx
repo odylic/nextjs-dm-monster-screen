@@ -98,7 +98,6 @@ const InitiativeOrder = () => {
               className="w-[50%] bg-slate-50 rounded-md m-1 h-10 active:bg-slate-200"
               onClick={(e) => {
                 e.preventDefault();
-                setCopyInitiative(makeIntoString);
                 navigator.clipboard.writeText(copyInitiative).then(
                   () => {
                     setSuccess(true);
@@ -132,6 +131,7 @@ const InitiativeOrder = () => {
                 onChange={(e) => {
                   setInitiative(e.target.value);
                 }}
+                onKeyDown={(e) => e.key === "e" && e.preventDefault()}
               />
               <button
                 disabled={!name || !initiative}
