@@ -23,7 +23,9 @@ const InitiativeOrder = () => {
 
   const initiativeOrder = useSelector(selectInitiativeOrder);
 
-  const initiativeCopy = initiativeOrder.map((item, index) => item.name);
+  const initiativeCopy = initiativeOrder.map((item, index) => {
+    return `${item.name} ${item.initiative}`;
+  });
   const makeIntoString = initiativeCopy.join("\n");
 
   useEffect(() => {
