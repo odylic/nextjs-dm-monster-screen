@@ -61,6 +61,7 @@ const MonsterCard = ({ hp, id, temp }: Monster) => {
               e.preventDefault();
               dispatch(setHp({ hp: Math.abs(Number(e.target.value)), id: id }));
             }}
+            onKeyDown={(e) => e.key === "e" && e.preventDefault()}
           />
           {/* Temp */}
           <input
@@ -80,6 +81,7 @@ const MonsterCard = ({ hp, id, temp }: Monster) => {
                 setTemp({ temp: Math.abs(Number(e.target.value)), id: id })
               );
             }}
+            onKeyDown={(e) => e.key === "e" && e.preventDefault()}
           />
         </div>
         <form>
@@ -116,6 +118,7 @@ const MonsterCard = ({ hp, id, temp }: Monster) => {
               onChange={(e: any) => {
                 setInput(e.target.value);
               }}
+              onKeyDown={(e) => e.key === "e" && e.preventDefault()}
             />
             {/* increase */}
             <button
