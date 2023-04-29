@@ -86,28 +86,11 @@ const MonsterCard = ({ hp, id, temp }: Monster) => {
         </div>
         <form>
           {/* Counter */}
-          <div className="m-2">
-            {/* decrease */}
-            <button
-              className="bg-gray-50 active:bg-slate-200 px-2 py-1 rounded-md"
-              onClick={(e) => {
-                e.preventDefault();
-                if (input === "")
-                  dispatch(
-                    decrementByAmount({ damage: Math.abs(Number(1)), id: id })
-                  );
-                dispatch(
-                  decrementByAmount({ damage: Math.abs(Number(input)), id: id })
-                );
-                setInput("");
-              }}
-            >
-              -
-            </button>
+          <div className="m-2 flex justify-center">
             {/* value */}
             <input
               type="number"
-              className="mx-2 w-24 h-10 text-center rounded-md"
+              className="mx-2 w-32 mt-3 h-10 text-center rounded-md "
               min="0"
               placeholder="Dmg/Heal"
               value={input}
@@ -121,22 +104,49 @@ const MonsterCard = ({ hp, id, temp }: Monster) => {
               onKeyDown={(e) => e.key === "e" && e.preventDefault()}
             />
             {/* increase */}
-            <button
-              className="bg-gray-50 active:bg-slate-200 px-2 py-1 rounded-md"
-              onClick={(e) => {
-                e.preventDefault();
-                if (input === "")
+            <div className="flex flex-col">
+              <button
+                className="bg-gray-50 active:bg-slate-200 px-2 py-1 rounded-md"
+                onClick={(e) => {
+                  e.preventDefault();
+                  if (input === "")
+                    dispatch(
+                      incrementByAmount({ damage: Math.abs(Number(1)), id: id })
+                    );
                   dispatch(
-                    incrementByAmount({ damage: Math.abs(Number(1)), id: id })
+                    incrementByAmount({
+                      damage: Math.abs(Number(input)),
+                      id: id,
+                    })
                   );
-                dispatch(
-                  incrementByAmount({ damage: Math.abs(Number(input)), id: id })
-                );
-                setInput("");
-              }}
-            >
-              +
-            </button>
+                  setInput("");
+                }}
+                type="button"
+              >
+                +
+              </button>
+              {/* decrease */}
+              <button
+                className="bg-gray-50 active:bg-slate-200 px-2 py-1 rounded-md mt-1"
+                onClick={(e) => {
+                  e.preventDefault();
+                  if (input === "")
+                    dispatch(
+                      decrementByAmount({ damage: Math.abs(Number(1)), id: id })
+                    );
+                  dispatch(
+                    decrementByAmount({
+                      damage: Math.abs(Number(input)),
+                      id: id,
+                    })
+                  );
+                  setInput("");
+                }}
+                type="submit"
+              >
+                -
+              </button>
+            </div>
           </div>
         </form>
         <textarea className="resize p-2" id="text" cols={25} rows={5} />
