@@ -35,6 +35,10 @@ export default function Home() {
     );
   };
 
+  const lowerCaseD = (input: string): string => {
+    return input.replace(/D/g, 'd')
+  };
+
   return (
     <div className="flex flex-col items-center bg-background h-screen overflow-auto">
       <Head>
@@ -49,7 +53,7 @@ export default function Home() {
             placeholder="Enter Dice Notation 4d6 Adv:2d20kh1 Disadvantage:2d20kl1"
             value={input}
             onChange={(e) => {
-              setInput(e.target.value);
+              setInput(lowerCaseD(e.target.value));
               setDice(e.target.value);
             }}
           />
