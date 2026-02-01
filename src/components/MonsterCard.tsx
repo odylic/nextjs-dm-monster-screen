@@ -24,7 +24,7 @@ const MonsterCard = ({ hp, id, temp, maxHp }: Monster) => {
         {/* close button */}
         <div className="absolute top-2 right-3 bg-slate-50 rounded-3xl">
           <button
-            className="px-1"
+            className="px-1 text-black"
             onClick={(e) => {
               e.preventDefault();
               dispatch(deleteMonster(id));
@@ -66,7 +66,7 @@ const MonsterCard = ({ hp, id, temp, maxHp }: Monster) => {
           {/* Temp */}
           <input
             type="number"
-            className="text-center text-xl rounded-md w-16 h-10 bg-zinc-800 border border-gray-600 text-white"
+            className="text-center text-xl rounded-md w-20 h-10 bg-zinc-800 border border-gray-600 text-white"
             placeholder="Temp"
             min="0"
             onFocus={(e) => {
