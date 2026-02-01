@@ -57,7 +57,7 @@ const InitiativeOrder = () => {
       {!visibility && (
         <div className="fixed top-0 right-0 bg-initiativeBackground text-center">
           <button
-            className="flex p-3"
+            className="flex p-3 text-white"
             onClick={(e) => {
               e.preventDefault();
               if (visibility) setVisibility(false);
@@ -73,7 +73,7 @@ const InitiativeOrder = () => {
         <div className="fixed top-0 bg-initiativeBackground h-screen w-[50vw] left-[50vw] sm:w-[30vw] sm:left-[70vw]">
           <div className="">
             <button
-              className="flex p-3"
+              className="flex p-3 text-white"
               onClick={(e) => {
                 e.preventDefault();
                 if (visibility) setVisibility(false);
@@ -86,7 +86,7 @@ const InitiativeOrder = () => {
           </div>
           <div className="flex w-full">
             <button
-              className="w-[48%] bg-slate-50 active:bg-slate-200 rounded-md m-1 h-10"
+              className="w-[48%] bg-slate-50 active:bg-slate-200 rounded-md m-1 h-10 text-black"
               onClick={(e) => {
                 e.preventDefault();
                 dispatch(sortInitiativeOrder(null));
@@ -95,7 +95,7 @@ const InitiativeOrder = () => {
               Sort
             </button>
             <button
-              className="w-[50%] bg-slate-50 rounded-md m-1 h-10 active:bg-slate-200"
+              className="w-[50%] bg-slate-50 rounded-md m-1 h-10 active:bg-slate-200 text-black"
               onClick={(e) => {
                 e.preventDefault();
                 navigator.clipboard.writeText(copyInitiative).then(
@@ -115,7 +115,7 @@ const InitiativeOrder = () => {
           <form>
             <div className="flex w-full">
               <input
-                className="w-[50%] h-10 m-1 rounded-md px-2"
+                className="w-[50%] h-10 m-1 rounded-md px-2 text-black"
                 placeholder="Name"
                 id="name"
                 value={name}
@@ -124,7 +124,7 @@ const InitiativeOrder = () => {
                 }}
               />
               <input
-                className="w-[30%] h-10 m-1 rounded-md px-2"
+                className="w-[30%] h-10 m-1 rounded-md px-2 text-black"
                 placeholder="Initiative"
                 value={initiative}
                 type="number"
@@ -135,7 +135,7 @@ const InitiativeOrder = () => {
               />
               <button
                 disabled={!name || !initiative}
-                className="w-[20%] h-10 bg-slate-50 active:bg-slate-200 rounded-md m-1"
+                className="w-[20%] h-10 bg-slate-50 active:bg-slate-200 rounded-md m-1 text-black"
                 type="submit"
                 onClick={(e) => {
                   e.preventDefault();

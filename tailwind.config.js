@@ -19,11 +19,10 @@ module.exports = {
         mono: [...defaultTheme.fontFamily.mono]
       },
       colors: {
-        background: 'rgb(219, 219, 219)',
-        initiativeBackground: 'rgb(163, 163, 163)',
+        initiativeBackground: '#27272a',
       },
       boxShadow: {
-        'monsterCard':'1px 1px 7px 2px rgba(189, 189, 189, 0.849)'
+        'monsterCard':'0 0 10px 2px rgba(88, 28, 135, 0.6)'
       }
     },
   },

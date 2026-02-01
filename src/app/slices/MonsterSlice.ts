@@ -5,6 +5,7 @@ export interface Monster {
   hp: number;
   id: string;
   temp: number;
+  maxHp: number;
 }
 
 export interface Initiative {
@@ -35,7 +36,9 @@ export const monsterSlice = createSlice({
     },
     setHp: (state, action: PayloadAction<{hp: number, id: string}>) => {
       state.monsterList.map((monster) => {
-        if (action.payload.id === monster.id) monster.hp = action.payload.hp
+        if (action.payload.id === monster.id) {
+          monster.hp = Math.min(action.payload.hp, monster.maxHp);
+        }
       })
     },
     setTemp: (state,action: PayloadAction<{temp: number, id: string}>) => {
@@ -43,9 +46,17 @@ export const monsterSlice = createSlice({
         if (action.payload.id === monster.id) monster.temp = action.payload.temp
       })
     },
+    setMaxHp: (state, action: PayloadAction<{maxHp: number, id: string}>) => {
+      state.monsterList.map((monster) => {
+        if (action.payload.id === monster.id) monster.maxHp = action.payload.maxHp
+      })
+    },
     incrementByAmount: (state, action: PayloadAction<{damage: number, id: string}>)=> {
       state.monsterList.map((monster)=> {
-        if (action.payload.id === monster.id) monster.hp += action.payload.damage;
+        if (action.payload.id === monster.id) {
+          monster.hp += action.payload.damage;
+          if (monster.hp > monster.maxHp) monster.hp = monster.maxHp;
+        }
         if (monster.hp < 0) monster.hp = 0;
       })
     },
@@ -93,6 +104,7 @@ export const {
   deleteMonster,
   setHp,
   setTemp,
+  setMaxHp,
   incrementByAmount,
   decrementByAmount,
   addToInitiativeOrder,

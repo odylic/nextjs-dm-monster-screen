@@ -30,6 +30,7 @@ export default function Home() {
       addMonster({
         hp: 0,
         temp: 0,
+        maxHp: 0,
         id: uuid(),
       })
     );
@@ -40,11 +41,11 @@ export default function Home() {
   };
 
   return (
-    <div className="flex flex-col items-center bg-background h-screen overflow-auto">
+    <div className="flex flex-col items-center bg-zinc-900 text-white h-screen overflow-auto">
       <Head>
         <title>DM Screen</title>
       </Head>
-      <h1 className="text-3xl m-5 font-serif">DM Screen</h1>
+      <h1 className="text-3xl m-5 font-serif text-white">DM Screen</h1>
       <div className="bg-purple-900 m-5 p-5 rounded-md min-w-fit">
         <h1 className="text-white text-center">{result}</h1>
         <form className="flex flex-wrap justify-center">
@@ -88,7 +89,7 @@ export default function Home() {
         </form>
       </div>
       <button
-        className="rounded-lg shadow-monsterCard p-4 bg-slate-50 active:bg-slate-200"
+        className="rounded-lg border border-zinc-600 p-4 bg-zinc-800 hover:bg-zinc-700 active:bg-zinc-600 text-white"
         onClick={(e) => {
           e.preventDefault();
           createMonster();
@@ -96,7 +97,7 @@ export default function Home() {
       >
         Add
       </button>
-      <div className="sm:flex flex-wrap">
+      <div className="sm:flex flex-wrap justify-center">
         {monsterList.map((monster: Monster) => {
           return (
             <MonsterCard
@@ -104,6 +105,7 @@ export default function Home() {
               id={monster.id}
               hp={monster.hp}
               temp={monster.temp}
+              maxHp={monster.maxHp}
             />
           );
         })}
