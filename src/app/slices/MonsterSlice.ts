@@ -20,7 +20,9 @@ export interface State {
 }
 
 const initialState: State = {
-  monsterList: [],
+  monsterList: [
+    { hp: 0, temp: 0, maxHp: 0, id: "initial-monster-1" }
+  ],
   initiativeOrder: []
 }
 
