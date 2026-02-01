@@ -50,7 +50,7 @@ export default function Home() {
         <h1 className="text-white text-center">{result}</h1>
         <form className="flex flex-wrap justify-center">
           <input
-            className="m-1 rounded-md px-2 w-[60%] min-w-fit"
+            className="m-1 rounded-md px-2 w-[60%] min-w-fit text-black"
             placeholder="Enter Dice Notation 4d6 Adv:2d20kh1 Disadvantage:2d20kl1"
             value={input}
             onChange={(e) => {
@@ -60,7 +60,7 @@ export default function Home() {
           />
           <div>
             <button
-              className="bg-slate-50 active:bg-slate-200 rounded-md px-2 m-1 w-[20%] min-w-fit"
+              className="bg-slate-50 active:bg-slate-200 rounded-md px-2 m-1 w-[20%] min-w-fit text-black"
               type="submit"
               onClick={(e) => {
                 e.preventDefault();
@@ -74,7 +74,7 @@ export default function Home() {
               Roll
             </button>
             <button
-              className="bg-slate-50 active:bg-slate-200 rounded-md px-2 m-1 w-[20%] min-w-fit"
+              className="bg-slate-50 active:bg-slate-200 rounded-md px-2 m-1 w-[20%] min-w-fit text-black"
               type="submit"
               onClick={(e) => {
                 e.preventDefault();
